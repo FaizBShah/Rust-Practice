@@ -1,18 +1,16 @@
-// #![allow(unused)]
-
 use rand::Rng;
 use std::io::{self, Write, BufReader, BufRead, ErrorKind};
 use std::fs::File;
 use std::cmp::Ordering;
 
-// Taking input from standard input and printing it
+// Types of variables
 fn main() {
-    println!("What is your name?");
+    const ONE_MILLION: i32 = 1_000_000; // Integer constant
+    const PI: f32 = 3.141592; // Float constant
 
-    let mut name= String::new();
-    let greeting = "Nice to meet you";
+    let age = "47"; // String variable
+    let mut age: u32 = age.trim().parse().expect("Age wasn't assigned a no."); // Shadowing
+    age = age + 1;
 
-    io::stdin().read_line(&mut name).expect("Didn't receive Input");
-    
-    print!("Hello {}! {}", name.trim_end(), greeting);
+    print!("I'm {} and I want ${}", age, ONE_MILLION);
 }
