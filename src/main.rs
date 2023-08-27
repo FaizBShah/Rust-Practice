@@ -1,47 +1,38 @@
-use std::cmp::Ordering;
-
-// Conditionals
+// Arrays and Loops
 fn main() {
-    let age = 8;
-
-    if age >= 1 && age <= 18 {
-        println!("Important Birthday");
-    } else if age == 21 || age == 50 {
-        println!("Little bit important birthday");
-    } else if age >= 65 {
-        println!("Least bit important birthday");
-    } else {
-        println!("Not an important birthday");
+    let arr = [1, 2, 3, 4, 5];
+    println!("{} {} {} {} {}", arr[0], arr[1], arr[2], arr[3], arr[4]);
+    println!("Length: {}", arr.len());
+    
+    // For loop through array
+    println!("Printing all elements of the array using for loop");
+    for num in arr {
+        println!("{}", num);
     }
 
-    // Ternary operator in Rust
-    let can_vote = if age >= 18 {
-        true // No need of semi-colon
-    } else {
-        false
-    };
+    // Declaring loop variable
+    let mut i = 0;
 
-    // Single-line ternary operator
-    let can_study = if age <= 18 { true } else { false };
-
-    println!("{} {}", can_vote, can_study);
-
-    let age2 = 22;
-
-    // Special kind of conditionals. More powerful than Switch cases
-    // You can match ranges too. Will throw compile error if all possible
-    // values are not handled
-    match age2 {
-        1..=18 => println!("Important Birthday"), // Matches range from 1 to 18 inclusive (If it was 1..18, the range would had been from 1 to 17)
-        21 | 50 => println!("Little bit important birthday"), // Matches 21 or 50
-        65..=i32::MAX => println!("Least bit important birthday"), // Matches 65 to Interger Max
-        _ => println!("Not an important birthday") // Default value
+    // While loop through array
+    println!("Printing all elements of the array using while loop");
+    while i < arr.len() {
+        println!("{}", arr[i]);
+        i += 1;
     }
 
-    let voting_age = 18;
+    i = 0;
 
-    match age2.cmp(&voting_age) {
-        Ordering::Less => println!("Can't Vote"),
-        Ordering::Equal | Ordering::Greater => println!("Can vote")
+    // Printing only the even no.s in the array
+    println!("Printing the even no.s of the array");
+    loop {
+        if i == arr.len() {
+            break;
+        }
+
+        if arr[i] % 2 == 0 {
+            println!("{}", arr[i]);
+        }
+
+        i += 1;
     }
 }
