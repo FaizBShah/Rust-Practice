@@ -1,7 +1,6 @@
 // Tuples
 fn main() {
     // Tuples are immutable, so it won't mutate even with the mut keyoword
-
     let my_tuple: (u8, String, f64) = (47, "Derek".to_string(), 50_000.00);
     println!("Name: {}", my_tuple.1);
 
