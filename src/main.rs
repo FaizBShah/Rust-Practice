@@ -1,38 +1,13 @@
-// Arrays and Loops
+// Tuples
 fn main() {
-    let arr = [1, 2, 3, 4, 5];
-    println!("{} {} {} {} {}", arr[0], arr[1], arr[2], arr[3], arr[4]);
-    println!("Length: {}", arr.len());
-    
-    // For loop through array
-    println!("Printing all elements of the array using for loop");
-    for num in arr {
-        println!("{}", num);
-    }
+    // Tuples are immutable, so it won't mutate even with the mut keyoword
 
-    // Declaring loop variable
-    let mut i = 0;
+    let my_tuple: (u8, String, f64) = (47, "Derek".to_string(), 50_000.00);
+    println!("Name: {}", my_tuple.1);
 
-    // While loop through array
-    println!("Printing all elements of the array using while loop");
-    while i < arr.len() {
-        println!("{}", arr[i]);
-        i += 1;
-    }
+    let (v1, v2, v3) = my_tuple;
 
-    i = 0;
-
-    // Printing only the even no.s in the array
-    println!("Printing the even no.s of the array");
-    loop {
-        if i == arr.len() {
-            break;
-        }
-
-        if arr[i] % 2 == 0 {
-            println!("{}", arr[i]);
-        }
-
-        i += 1;
-    }
+    println!("{}", v1); // 47
+    println!("{}", v2); // "Derek"
+    println!("{}", v3); // 50000
 }
