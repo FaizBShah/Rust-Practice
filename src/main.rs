@@ -1,10 +1,43 @@
-// Casting
+// Enums
+// You can define enums outside of a function...
+enum Suits {
+    Heart,
+    Diamond,
+    Spade,
+    Club
+}
+
 fn main() {
-    let num1: u8 = 5;
-    let num2: u8 = 4;
+    //...or inside!!
+    enum Day {
+        Sunday,
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday
+    }
 
-    let num3: u32 = num1 as u32; // Casting u8 to u32 using 'as' keyword
-    let num4: u32 = (num1 as u32) + (num2 as u32);
+    // To declare a method for an enum
+    impl Day {
+        fn is_weekend(&self) -> bool {
+            match self {
+                Day::Sunday | Day::Saturday => true,
+                _ => false
+            }
+        }
+    }
 
-    println!("{} {}", num3, num4);
+    println!("{}", Day::Sunday.is_weekend());
+    println!("{}", Day::Monday.is_weekend());
+    println!("{}", Day::Tuesday.is_weekend());
+    println!("{}", Day::Wednesday.is_weekend());
+    println!("{}", Day::Thursday.is_weekend());
+    println!("{}", Day::Friday.is_weekend());
+    println!("{}", Day::Saturday.is_weekend());
+
+    let today: Day = Day::Monday;
+    
+    println!("{}", today.is_weekend());
 }
