@@ -1,43 +1,25 @@
-// Enums
-// You can define enums outside of a function...
-enum Suits {
-    Heart,
-    Diamond,
-    Spade,
-    Club
-}
-
+// Vectors
 fn main() {
-    //...or inside!!
-    enum Day {
-        Sunday,
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday
-    }
+   let _vec1: Vec<i32> = Vec::new(); // Immutable vector
+   let mut vec2: Vec<i32> = vec![1, 2, 3, 4];
+   vec2.push(5);
+   println!("{}", vec2[0]);
 
-    // To declare a method for an enum
-    impl Day {
-        fn is_weekend(&self) -> bool {
-            match self {
-                Day::Sunday | Day::Saturday => true,
-                _ => false
-            }
-        }
-    }
+   let _second: &i32 = &vec2[1];
 
-    println!("{}", Day::Sunday.is_weekend());
-    println!("{}", Day::Monday.is_weekend());
-    println!("{}", Day::Tuesday.is_weekend());
-    println!("{}", Day::Wednesday.is_weekend());
-    println!("{}", Day::Thursday.is_weekend());
-    println!("{}", Day::Friday.is_weekend());
-    println!("{}", Day::Saturday.is_weekend());
+   match vec2.get(1) {
+       Some(value) => println!("{}", value),
+       None => println!("No second value")
+   }
+   
+   for i in &mut vec2 {
+       *i *= 2;
+   }
 
-    let today: Day = Day::Monday;
-    
-    println!("{}", today.is_weekend());
+   for i in &mut vec2 {
+        println!("{}", i);
+   }
+
+   println!("Length: {}", vec2.len());
+   println!("Pop: {:?}", vec2.pop());
 }
