@@ -1,33 +1,31 @@
-// HashMaps
-use std::collections::HashMap;
-
+// Structs
 fn main() {
-   let mut heroes = HashMap::new();
-
-   // Inserting values in HashMap
-   heroes.insert("Superman", "Clark Kent");
-   heroes.insert("Batman", "Bruce Wayne");
-   heroes.insert("Ironman", "Tony Stark");
-
-   for (k, v) in heroes.iter() {
-       println!("{} - {}", k, v);
+   struct Customer {
+        name: String,
+        address: String,
+        balance: f32
    }
 
-   println!("The size of hash map is = {}", heroes.len()); // 3
-   
-   println!("{}", heroes.contains_key("Superman")); // true
-   println!("{}", heroes.contains_key("Spiderman")); // false
+   let mut bob = Customer {
+        name: String::from("Bob Marley"),
+        address: String::from("555 Main St."),
+        balance: 234.50
+   };
 
-   heroes.remove("Superman");
+   bob.balance = 123.20;
 
-   println!("The size of hash map is = {}", heroes.len()); // 2
-   println!("{}", heroes.contains_key("Superman")); // false
+   println!("{}, {} - {}", bob.name, bob.address, bob.balance);
 
-   if heroes.contains_key("Batman") {
-        let batman_real_name = heroes.get("Batman");
-        match batman_real_name {
-            Some(x) => println!("The real name of Batman is {}", x),
-            None => println!("Name not present")
-        }
+   // structs with generics
+   struct Rectangle<T, U> {
+        length: T,
+        width: U
    }
+
+   let rec = Rectangle {
+        length: 1,
+        width: 2.4
+   };
+
+   println!("{} {}", rec.length, rec.width);
 }
