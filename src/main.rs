@@ -1,22 +1,27 @@
-// Iterators
+// Closures
 fn main() {
-    let mut arr = [1, 2, 3, 4];
+    let can_vote = |age: i32| {
+        age >= 18
+    };
+    println!("Can vote: {}", can_vote(22));
 
-    for val in arr.iter() {
-        println!("{}", val); // Can read the values
+    let mut samp1 = 5;
+    let print_var = || println!("samp1 = {}", samp1);
+    print_var();
+    samp1 = 10;
+    let mut change_var = || samp1 += 1;
+    change_var();
+    println!("samp1 = {}", samp1);
+    samp1 = 10;
+    println!("samp1 = {}", samp1);
+
+    fn use_func<T>(a: i32, b: i32, func: T) -> i32 where T: Fn(i32, i32) -> i32 {
+        func(a, b)
     }
 
-    for val in arr.iter_mut() {
-        *val *= 2; // Can update the value
-    }
+    let sum = |a: i32, b: i32| a + b;
+    let prod = |a: i32, b: i32| a * b;
 
-    println!("{:?}", arr);
-
-    let mut iter = arr.iter();
-
-    println!("{:?}", iter.next()); // Some(2)
-    println!("{:?}", iter.next()); // Some(4)
-    println!("{:?}", iter.next()); // Some(6)
-    println!("{:?}", iter.next()); // Some(8)
-    println!("{:?}", iter.next()); // None
+    println!("{} + {} = {}", 2, 3, use_func(2, 3, sum));
+    println!("{} * {} = {}", 2, 3, use_func(2, 3, prod));
 }
